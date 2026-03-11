@@ -15,6 +15,8 @@ const AssignTasksPage = () => {
   const [assignments, setAssignments] = useState<Array<{ student: string; task: string; type: string; date: string }>>([
     { student: "Ethan Brooks", task: "Complete Python Recursion Module", type: "course", date: "2025-09-14" },
     { student: "Logan Mitchell", task: "DSA Practice Problems Set 3", type: "assessment", date: "2025-09-13" },
+    { student: "Noah Carter", task: "JavaScript Fundamentals Review", type: "course", date: "2025-09-14" },
+    { student: "All Students", task: "React Component Quiz", type: "assessment", date: "2025-09-15" },
   ]);
   const { toast } = useToast();
 
@@ -25,14 +27,14 @@ const AssignTasksPage = () => {
       ...prev,
     ]);
     setTaskTitle("");
-    toast({ title: "Task Assigned", description: `"${taskTitle}" assigned to ${selectedStudent}` });
+    toast({ title: "✅ Task Assigned", description: `"${taskTitle}" assigned to ${selectedStudent}. It will appear on their dashboard.` });
   };
 
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-heading font-bold text-foreground">Assign Tasks</h1>
-        <p className="text-muted-foreground">Assign assessments or recommend courses to students</p>
+        <p className="text-muted-foreground">Assign assessments or courses — they appear on students' dashboards</p>
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="stat-card">
@@ -40,7 +42,10 @@ const AssignTasksPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
           <Select onValueChange={setSelectedStudent}>
             <SelectTrigger><SelectValue placeholder="Select Student" /></SelectTrigger>
-            <SelectContent>{students.map(s => <SelectItem key={s.id} value={s.name}>{s.name}</SelectItem>)}</SelectContent>
+            <SelectContent>
+              <SelectItem value="All Students">All Students</SelectItem>
+              {students.map(s => <SelectItem key={s.id} value={s.name}>{s.name}</SelectItem>)}
+            </SelectContent>
           </Select>
           <Input value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} placeholder="Task title..." />
           <Select onValueChange={setTaskType}>
@@ -50,7 +55,9 @@ const AssignTasksPage = () => {
               <SelectItem value="assessment">Assessment</SelectItem>
             </SelectContent>
           </Select>
-          <Button onClick={assign} className="gradient-primary text-primary-foreground"><Send className="w-4 h-4 mr-2" />Assign</Button>
+          <Button onClick={assign} className="gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/25 transition-all">
+            <Send className="w-4 h-4 mr-2" />Assign
+          </Button>
         </div>
       </motion.div>
 
@@ -59,7 +66,7 @@ const AssignTasksPage = () => {
         <div className="space-y-3">
           {assignments.map((a, i) => (
             <motion.div key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
-              className="flex items-center justify-between p-3 rounded-lg bg-accent/30 border border-border/50">
+              className="flex items-center justify-between p-3 rounded-lg bg-accent/30 border border-border/50 hover:bg-accent/50 transition-colors">
               <div className="flex items-center gap-3">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${a.type === "course" ? "bg-info/10" : "bg-primary/10"}`}>
                   {a.type === "course" ? <BookOpen className="w-4 h-4 text-info" /> : <FileText className="w-4 h-4 text-primary" />}

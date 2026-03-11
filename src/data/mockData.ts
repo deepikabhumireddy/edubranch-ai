@@ -1,9 +1,14 @@
 export const courses = [
-  { id: 1, title: "Python for Beginners", category: "Development", lessons: 16, duration: "8h 10min", rating: 4.7, progress: 65, color: "hsl(24, 95%, 53%)" },
-  { id: 2, title: "UI/UX Design Fundamentals", category: "Design", lessons: 13, duration: "6h 30min", rating: 4.5, progress: 40, color: "hsl(217, 91%, 60%)" },
-  { id: 3, title: "JavaScript Essentials", category: "Development", lessons: 12, duration: "3h 12min", rating: 4.7, progress: 80, color: "hsl(38, 92%, 50%)" },
-  { id: 4, title: "Data Structures & Algorithms", category: "Development", lessons: 20, duration: "12h", rating: 4.8, progress: 30, color: "hsl(142, 71%, 45%)" },
-  { id: 5, title: "Responsive Web Design", category: "Design", lessons: 10, duration: "5h", rating: 4.6, progress: 90, color: "hsl(280, 65%, 60%)" },
+  { id: 1, title: "Python for Beginners", category: "Development", lessons: 16, duration: "8h 10min", rating: 4.7, progress: 65, color: "hsl(250, 85%, 60%)", enabled: true, live: true },
+  { id: 2, title: "UI/UX Design Fundamentals", category: "Design", lessons: 13, duration: "6h 30min", rating: 4.5, progress: 40, color: "hsl(200, 85%, 55%)", enabled: true, live: false },
+  { id: 3, title: "JavaScript Essentials", category: "Development", lessons: 12, duration: "3h 12min", rating: 4.7, progress: 80, color: "hsl(38, 92%, 50%)", enabled: true, live: true },
+  { id: 4, title: "Data Structures & Algorithms", category: "Development", lessons: 20, duration: "12h", rating: 4.8, progress: 30, color: "hsl(152, 69%, 45%)", enabled: true, live: false },
+  { id: 5, title: "Responsive Web Design", category: "Design", lessons: 10, duration: "5h", rating: 4.6, progress: 90, color: "hsl(330, 75%, 60%)", enabled: true, live: false },
+  { id: 6, title: "Machine Learning Basics", category: "Data Science", lessons: 18, duration: "10h 30min", rating: 4.9, progress: 15, color: "hsl(280, 65%, 60%)", enabled: true, live: true },
+  { id: 7, title: "React & TypeScript", category: "Development", lessons: 22, duration: "14h", rating: 4.8, progress: 55, color: "hsl(200, 85%, 55%)", enabled: true, live: false },
+  { id: 8, title: "Database Management", category: "Development", lessons: 15, duration: "7h 45min", rating: 4.4, progress: 70, color: "hsl(152, 69%, 45%)", enabled: true, live: false },
+  { id: 9, title: "Cloud Computing Fundamentals", category: "DevOps", lessons: 14, duration: "9h", rating: 4.6, progress: 20, color: "hsl(38, 92%, 50%)", enabled: false, live: false },
+  { id: 10, title: "Cybersecurity Essentials", category: "Security", lessons: 16, duration: "8h", rating: 4.7, progress: 0, color: "hsl(0, 84%, 60%)", enabled: false, live: false },
 ];
 
 export const assessments = [
@@ -12,6 +17,10 @@ export const assessments = [
   { id: 3, title: "UI Design Principles", type: "quiz" as const, questions: 15, duration: 20, status: "pending" as const, score: null, timeTaken: null, date: "2025-09-15" },
   { id: 4, title: "Algorithm Challenge", type: "coding" as const, questions: 3, duration: 90, status: "pending" as const, score: null, timeTaken: null, date: "2025-09-18" },
   { id: 5, title: "CSS Layout Mastery", type: "quiz" as const, questions: 25, duration: 35, status: "completed" as const, score: 78, timeTaken: 30, date: "2025-09-05" },
+  { id: 6, title: "React Component Quiz", type: "quiz" as const, questions: 20, duration: 25, status: "pending" as const, score: null, timeTaken: null, date: "2025-09-20" },
+  { id: 7, title: "Database SQL Challenge", type: "coding" as const, questions: 8, duration: 45, status: "pending" as const, score: null, timeTaken: null, date: "2025-09-22" },
+  { id: 8, title: "ML Fundamentals Test", type: "quiz" as const, questions: 30, duration: 40, status: "pending" as const, score: null, timeTaken: null, date: "2025-09-25" },
+  { id: 9, title: "Python OOP Challenge", type: "coding" as const, questions: 6, duration: 50, status: "completed" as const, score: 88, timeTaken: 42, date: "2025-09-03" },
 ];
 
 export const weeklyPerformance = [
@@ -37,15 +46,22 @@ export const leaderboard = [
   { rank: 3, name: "Alex Johnson", score: 9052, courses: 21, hours: 700, certs: 28, avatar: "AJ" },
   { rank: 4, name: "Olivia Bennett", score: 8025, courses: 20, hours: 620, certs: 25, avatar: "OB" },
   { rank: 5, name: "Logan Mitchell", score: 7850, courses: 18, hours: 580, certs: 20, avatar: "LM" },
+  { rank: 6, name: "Sophia Davis", score: 7620, courses: 17, hours: 540, certs: 18, avatar: "SD" },
+  { rank: 7, name: "Noah Carter", score: 7200, courses: 16, hours: 500, certs: 16, avatar: "NC" },
+  { rank: 8, name: "Emma Wilson", score: 6890, courses: 15, hours: 470, certs: 15, avatar: "EW" },
+  { rank: 9, name: "Liam Anderson", score: 6540, courses: 14, hours: 430, certs: 14, avatar: "LA" },
+  { rank: 10, name: "Ava Thompson", score: 6200, courses: 13, hours: 400, certs: 12, avatar: "AT" },
 ];
 
-export const activeDays = [3, 5, 6, 8, 9, 10, 12, 13, 15, 17, 19, 20, 22, 24, 25, 27];
+export const activeDays = [3, 5, 6, 8, 9, 10];
 
 export const tasks = [
   { id: 1, title: "Complete Python Module 5", reward: 500, type: "course" as const },
   { id: 2, title: "Submit JS Coding Challenge", reward: 1500, type: "assessment" as const },
   { id: 3, title: "Watch Design Intro Lecture", reward: 250, type: "course" as const },
   { id: 4, title: "Submit project draft for review", reward: 500, type: "assessment" as const },
+  { id: 5, title: "Complete ML Basics Module 2", reward: 600, type: "course" as const },
+  { id: 6, title: "React Component Challenge", reward: 1200, type: "assessment" as const },
 ];
 
 export const students = [
@@ -55,17 +71,25 @@ export const students = [
   { id: 4, name: "Olivia Bennett", avgScore: 88, courses: 7, drift: 1.2, trend: "up" as const, avatar: "OB" },
   { id: 5, name: "Logan Mitchell", avgScore: 65, courses: 4, drift: -12.1, trend: "down" as const, avatar: "LM" },
   { id: 6, name: "Sophia Davis", avgScore: 95, courses: 9, drift: 5.4, trend: "up" as const, avatar: "SD" },
+  { id: 7, name: "Noah Carter", avgScore: 72, courses: 5, drift: -6.8, trend: "down" as const, avatar: "NC" },
+  { id: 8, name: "Emma Wilson", avgScore: 89, courses: 7, drift: 2.7, trend: "up" as const, avatar: "EW" },
+  { id: 9, name: "Liam Anderson", avgScore: 74, courses: 4, drift: -4.2, trend: "stable" as const, avatar: "LA" },
+  { id: 10, name: "Ava Thompson", avgScore: 91, courses: 8, drift: 4.5, trend: "up" as const, avatar: "AT" },
 ];
 
 export const doubts = [
   { id: 1, student: "Alex Johnson", question: "How does recursion work in Python?", course: "Python for Beginners", status: "open" as const, date: "2025-09-14" },
   { id: 2, student: "Ethan Brooks", question: "Difference between flexbox and grid?", course: "Responsive Web Design", status: "open" as const, date: "2025-09-13" },
-  { id: 3, student: "Logan Mitchell", question: "What is Big O notation?", course: "Data Structures & Algorithms", status: "resolved" as const, date: "2025-09-10", answer: "Big O notation describes the upper bound of time complexity..." },
+  { id: 3, student: "Logan Mitchell", question: "What is Big O notation?", course: "Data Structures & Algorithms", status: "resolved" as const, date: "2025-09-10", answer: "Big O notation describes the upper bound of time complexity. It shows the worst-case scenario of how an algorithm's runtime grows with input size. O(1) is constant, O(n) is linear, O(n²) is quadratic." },
+  { id: 4, student: "Noah Carter", question: "How to implement binary search?", course: "Data Structures & Algorithms", status: "open" as const, date: "2025-09-14" },
+  { id: 5, student: "Emma Wilson", question: "What is the difference between var, let and const?", course: "JavaScript Essentials", status: "resolved" as const, date: "2025-09-11", answer: "var is function-scoped, let and const are block-scoped. const cannot be reassigned. let can be reassigned but not redeclared. var can be both." },
+  { id: 6, student: "Ava Thompson", question: "How to handle overfitting in ML?", course: "Machine Learning Basics", status: "open" as const, date: "2025-09-15" },
 ];
 
 export const scheduleEvents = [
-  { time: "13:30 - 15:20", title: "Python fundamentals: first step into coding", color: "hsl(142, 71%, 45%)" },
-  { time: "16:20 - 18:00", title: "Responsive Design Basics: adapt your UI", color: "hsl(24, 95%, 53%)" },
+  { time: "13:30 - 15:20", title: "Python fundamentals: first step into coding", color: "hsl(152, 69%, 45%)" },
+  { time: "16:20 - 18:00", title: "Responsive Design Basics: adapt your UI", color: "hsl(250, 85%, 60%)" },
+  { time: "18:30 - 19:30", title: "Live: Machine Learning Q&A Session", color: "hsl(330, 75%, 60%)" },
 ];
 
 export const quizQuestions = [
@@ -74,4 +98,169 @@ export const quizQuestions = [
   { id: 3, question: "What data type is the result of: 10 / 3?", options: ["int", "float", "str", "bool"], correct: 1 },
   { id: 4, question: "Which method adds an element to the end of a list?", options: ["add()", "push()", "append()", "insert()"], correct: 2 },
   { id: 5, question: "What does 'len()' function return?", options: ["Data type", "Length", "Last element", "First element"], correct: 1 },
+  { id: 6, question: "Which of the following is a mutable data type?", options: ["tuple", "str", "list", "int"], correct: 2 },
+  { id: 7, question: "What is the correct syntax for a for loop?", options: ["for i in range(5):", "for(i=0;i<5;i++)", "for i to 5:", "loop i = 0 to 5"], correct: 0 },
+  { id: 8, question: "What does the 'pass' keyword do?", options: ["Exits the loop", "Skips iteration", "Does nothing (placeholder)", "Returns None"], correct: 2 },
+  { id: 9, question: "Which operator is used for floor division?", options: ["/", "//", "%", "**"], correct: 1 },
+  { id: 10, question: "What is a lambda function?", options: ["A named function", "An anonymous function", "A recursive function", "A class method"], correct: 1 },
+  { id: 11, question: "Which module is used for regex in Python?", options: ["regex", "re", "match", "pattern"], correct: 1 },
+  { id: 12, question: "What is the output of bool('')?", options: ["True", "False", "None", "Error"], correct: 1 },
+];
+
+// Drift data for each student (12 weeks)
+export const studentDriftData: Record<number, { week: string; driftScore: number; accuracy: number; guessing: number }[]> = {
+  1: [ // Alex Johnson
+    { week: "W1", driftScore: 0.15, accuracy: 80, guessing: 15 },
+    { week: "W2", driftScore: 0.22, accuracy: 78, guessing: 14 },
+    { week: "W3", driftScore: 0.28, accuracy: 75, guessing: 22 },
+    { week: "W4", driftScore: 0.32, accuracy: 73, guessing: 23 },
+    { week: "W5", driftScore: 0.38, accuracy: 72, guessing: 25 },
+    { week: "W6", driftScore: 0.42, accuracy: 70, guessing: 28 },
+    { week: "W7", driftScore: 0.48, accuracy: 68, guessing: 32 },
+    { week: "W8", driftScore: 0.55, accuracy: 65, guessing: 35 },
+    { week: "W9", driftScore: 0.60, accuracy: 62, guessing: 40 },
+    { week: "W10", driftScore: 0.65, accuracy: 60, guessing: 42 },
+    { week: "W11", driftScore: 0.70, accuracy: 58, guessing: 45 },
+    { week: "W12", driftScore: 0.75, accuracy: 55, guessing: 48 },
+  ],
+  2: [ // Michael Turner - improving
+    { week: "W1", driftScore: 0.60, accuracy: 60, guessing: 40 },
+    { week: "W2", driftScore: 0.55, accuracy: 65, guessing: 35 },
+    { week: "W3", driftScore: 0.48, accuracy: 70, guessing: 28 },
+    { week: "W4", driftScore: 0.42, accuracy: 74, guessing: 24 },
+    { week: "W5", driftScore: 0.35, accuracy: 78, guessing: 20 },
+    { week: "W6", driftScore: 0.30, accuracy: 80, guessing: 18 },
+    { week: "W7", driftScore: 0.25, accuracy: 83, guessing: 15 },
+    { week: "W8", driftScore: 0.20, accuracy: 86, guessing: 12 },
+    { week: "W9", driftScore: 0.18, accuracy: 88, guessing: 10 },
+    { week: "W10", driftScore: 0.15, accuracy: 90, guessing: 9 },
+    { week: "W11", driftScore: 0.12, accuracy: 91, guessing: 8 },
+    { week: "W12", driftScore: 0.10, accuracy: 92, guessing: 7 },
+  ],
+  3: [ // Ethan Brooks - declining
+    { week: "W1", driftScore: 0.18, accuracy: 82, guessing: 15 },
+    { week: "W2", driftScore: 0.25, accuracy: 78, guessing: 14 },
+    { week: "W3", driftScore: 0.30, accuracy: 76, guessing: 22 },
+    { week: "W4", driftScore: 0.38, accuracy: 73, guessing: 24 },
+    { week: "W5", driftScore: 0.42, accuracy: 70, guessing: 28 },
+    { week: "W6", driftScore: 0.50, accuracy: 66, guessing: 35 },
+    { week: "W7", driftScore: 0.58, accuracy: 62, guessing: 38 },
+    { week: "W8", driftScore: 0.65, accuracy: 55, guessing: 45 },
+    { week: "W9", driftScore: 0.72, accuracy: 50, guessing: 48 },
+    { week: "W10", driftScore: 0.78, accuracy: 46, guessing: 52 },
+    { week: "W11", driftScore: 0.82, accuracy: 42, guessing: 55 },
+    { week: "W12", driftScore: 0.85, accuracy: 38, guessing: 58 },
+  ],
+  4: [ // Olivia Bennett
+    { week: "W1", driftScore: 0.30, accuracy: 75, guessing: 20 },
+    { week: "W2", driftScore: 0.28, accuracy: 77, guessing: 18 },
+    { week: "W3", driftScore: 0.25, accuracy: 80, guessing: 16 },
+    { week: "W4", driftScore: 0.22, accuracy: 82, guessing: 14 },
+    { week: "W5", driftScore: 0.20, accuracy: 84, guessing: 13 },
+    { week: "W6", driftScore: 0.18, accuracy: 85, guessing: 12 },
+    { week: "W7", driftScore: 0.16, accuracy: 86, guessing: 11 },
+    { week: "W8", driftScore: 0.14, accuracy: 87, guessing: 10 },
+    { week: "W9", driftScore: 0.13, accuracy: 88, guessing: 10 },
+    { week: "W10", driftScore: 0.12, accuracy: 88, guessing: 9 },
+    { week: "W11", driftScore: 0.11, accuracy: 89, guessing: 9 },
+    { week: "W12", driftScore: 0.10, accuracy: 90, guessing: 8 },
+  ],
+  5: [ // Logan Mitchell - steep decline
+    { week: "W1", driftScore: 0.15, accuracy: 78, guessing: 18 },
+    { week: "W2", driftScore: 0.25, accuracy: 72, guessing: 22 },
+    { week: "W3", driftScore: 0.35, accuracy: 68, guessing: 28 },
+    { week: "W4", driftScore: 0.45, accuracy: 62, guessing: 35 },
+    { week: "W5", driftScore: 0.55, accuracy: 55, guessing: 42 },
+    { week: "W6", driftScore: 0.62, accuracy: 50, guessing: 48 },
+    { week: "W7", driftScore: 0.70, accuracy: 45, guessing: 52 },
+    { week: "W8", driftScore: 0.75, accuracy: 42, guessing: 55 },
+    { week: "W9", driftScore: 0.80, accuracy: 38, guessing: 58 },
+    { week: "W10", driftScore: 0.84, accuracy: 35, guessing: 60 },
+    { week: "W11", driftScore: 0.88, accuracy: 32, guessing: 62 },
+    { week: "W12", driftScore: 0.92, accuracy: 30, guessing: 65 },
+  ],
+  6: [ // Sophia Davis - strong improvement
+    { week: "W1", driftScore: 0.45, accuracy: 70, guessing: 30 },
+    { week: "W2", driftScore: 0.40, accuracy: 73, guessing: 25 },
+    { week: "W3", driftScore: 0.35, accuracy: 78, guessing: 20 },
+    { week: "W4", driftScore: 0.28, accuracy: 82, guessing: 16 },
+    { week: "W5", driftScore: 0.22, accuracy: 85, guessing: 13 },
+    { week: "W6", driftScore: 0.18, accuracy: 88, guessing: 11 },
+    { week: "W7", driftScore: 0.14, accuracy: 90, guessing: 9 },
+    { week: "W8", driftScore: 0.12, accuracy: 92, guessing: 8 },
+    { week: "W9", driftScore: 0.10, accuracy: 93, guessing: 7 },
+    { week: "W10", driftScore: 0.08, accuracy: 94, guessing: 6 },
+    { week: "W11", driftScore: 0.07, accuracy: 95, guessing: 5 },
+    { week: "W12", driftScore: 0.06, accuracy: 95, guessing: 5 },
+  ],
+  7: [ // Noah Carter
+    { week: "W1", driftScore: 0.20, accuracy: 78, guessing: 18 },
+    { week: "W2", driftScore: 0.28, accuracy: 74, guessing: 22 },
+    { week: "W3", driftScore: 0.35, accuracy: 70, guessing: 28 },
+    { week: "W4", driftScore: 0.42, accuracy: 66, guessing: 32 },
+    { week: "W5", driftScore: 0.48, accuracy: 63, guessing: 35 },
+    { week: "W6", driftScore: 0.55, accuracy: 60, guessing: 38 },
+    { week: "W7", driftScore: 0.60, accuracy: 58, guessing: 40 },
+    { week: "W8", driftScore: 0.65, accuracy: 55, guessing: 42 },
+    { week: "W9", driftScore: 0.68, accuracy: 52, guessing: 45 },
+    { week: "W10", driftScore: 0.72, accuracy: 50, guessing: 48 },
+    { week: "W11", driftScore: 0.75, accuracy: 48, guessing: 50 },
+    { week: "W12", driftScore: 0.78, accuracy: 45, guessing: 52 },
+  ],
+  8: [ // Emma Wilson
+    { week: "W1", driftScore: 0.35, accuracy: 72, guessing: 25 },
+    { week: "W2", driftScore: 0.30, accuracy: 75, guessing: 22 },
+    { week: "W3", driftScore: 0.25, accuracy: 78, guessing: 18 },
+    { week: "W4", driftScore: 0.22, accuracy: 80, guessing: 16 },
+    { week: "W5", driftScore: 0.18, accuracy: 83, guessing: 14 },
+    { week: "W6", driftScore: 0.15, accuracy: 85, guessing: 12 },
+    { week: "W7", driftScore: 0.13, accuracy: 86, guessing: 11 },
+    { week: "W8", driftScore: 0.12, accuracy: 87, guessing: 10 },
+    { week: "W9", driftScore: 0.11, accuracy: 88, guessing: 10 },
+    { week: "W10", driftScore: 0.10, accuracy: 89, guessing: 9 },
+    { week: "W11", driftScore: 0.09, accuracy: 89, guessing: 9 },
+    { week: "W12", driftScore: 0.08, accuracy: 90, guessing: 8 },
+  ],
+  9: [ // Liam Anderson
+    { week: "W1", driftScore: 0.25, accuracy: 76, guessing: 20 },
+    { week: "W2", driftScore: 0.28, accuracy: 74, guessing: 22 },
+    { week: "W3", driftScore: 0.30, accuracy: 73, guessing: 24 },
+    { week: "W4", driftScore: 0.32, accuracy: 72, guessing: 25 },
+    { week: "W5", driftScore: 0.35, accuracy: 71, guessing: 26 },
+    { week: "W6", driftScore: 0.38, accuracy: 70, guessing: 28 },
+    { week: "W7", driftScore: 0.40, accuracy: 69, guessing: 30 },
+    { week: "W8", driftScore: 0.42, accuracy: 68, guessing: 32 },
+    { week: "W9", driftScore: 0.44, accuracy: 67, guessing: 33 },
+    { week: "W10", driftScore: 0.45, accuracy: 66, guessing: 34 },
+    { week: "W11", driftScore: 0.46, accuracy: 65, guessing: 35 },
+    { week: "W12", driftScore: 0.48, accuracy: 64, guessing: 36 },
+  ],
+  10: [ // Ava Thompson
+    { week: "W1", driftScore: 0.40, accuracy: 68, guessing: 28 },
+    { week: "W2", driftScore: 0.35, accuracy: 72, guessing: 24 },
+    { week: "W3", driftScore: 0.30, accuracy: 76, guessing: 20 },
+    { week: "W4", driftScore: 0.25, accuracy: 80, guessing: 17 },
+    { week: "W5", driftScore: 0.20, accuracy: 83, guessing: 14 },
+    { week: "W6", driftScore: 0.17, accuracy: 85, guessing: 12 },
+    { week: "W7", driftScore: 0.14, accuracy: 87, guessing: 10 },
+    { week: "W8", driftScore: 0.12, accuracy: 89, guessing: 9 },
+    { week: "W9", driftScore: 0.10, accuracy: 90, guessing: 8 },
+    { week: "W10", driftScore: 0.09, accuracy: 91, guessing: 7 },
+    { week: "W11", driftScore: 0.08, accuracy: 91, guessing: 7 },
+    { week: "W12", driftScore: 0.07, accuracy: 92, guessing: 6 },
+  ],
+};
+
+export const solveMethods = {
+  conceptual: 55,
+  pattern: 25,
+  guessing: 20,
+};
+
+export const chatMessages = [
+  { id: 1, sender: "Michael Turner", avatar: "MT", message: "Hey, anyone solved the recursion problem in Python?", time: "10:30 AM" },
+  { id: 2, sender: "Olivia Bennett", avatar: "OB", message: "Yes! Use a base case for n=0 and recursive call for n-1", time: "10:32 AM" },
+  { id: 3, sender: "Ethan Brooks", avatar: "EB", message: "I'm stuck on the Big O notation quiz. Any tips?", time: "10:45 AM" },
+  { id: 4, sender: "Sophia Davis", avatar: "SD", message: "Focus on understanding growth rates: constant < log < linear < quadratic", time: "10:48 AM" },
+  { id: 5, sender: "Alex Johnson", avatar: "AJ", message: "The CSS grid challenge was tough! But flexbox makes it easier", time: "11:00 AM" },
 ];
