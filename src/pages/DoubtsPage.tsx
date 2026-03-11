@@ -19,23 +19,25 @@ const DoubtsPage = () => {
       ...prev,
     ]);
     setNewDoubt("");
-    toast({ title: "Doubt Raised", description: "Your doubt ticket has been submitted to the instructor." });
+    toast({ title: "Doubt Raised 📨", description: "Your doubt ticket has been submitted to the instructor." });
   };
 
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-heading font-bold text-foreground">Doubts & Discussions</h1>
-        <p className="text-muted-foreground">Raise doubts and interact with peers and instructors</p>
+        <p className="text-muted-foreground">Raise doubts — they appear on the instructor's page for resolution</p>
       </motion.div>
 
-      <div className="stat-card">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="stat-card">
         <div className="flex gap-3">
           <Input value={newDoubt} onChange={(e) => setNewDoubt(e.target.value)} placeholder="Type your doubt here..." className="flex-1"
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()} />
-          <Button onClick={handleSubmit} className="gradient-primary text-primary-foreground"><Send className="w-4 h-4" /></Button>
+          <Button onClick={handleSubmit} className="gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/25 transition-all">
+            <Send className="w-4 h-4" />
+          </Button>
         </div>
-      </div>
+      </motion.div>
 
       <div className="space-y-3">
         {localDoubts.map((d, i) => (
@@ -49,9 +51,10 @@ const DoubtsPage = () => {
                   <p className="font-medium text-foreground">{d.question}</p>
                   <p className="text-xs text-muted-foreground mt-1">{d.student} · {d.course} · {d.date}</p>
                   {d.status === "resolved" && d.answer && (
-                    <div className="mt-3 p-3 rounded-lg bg-accent/50 border-l-4 border-success">
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="mt-3 p-3 rounded-lg bg-success/5 border-l-4 border-success">
+                      <p className="text-xs font-medium text-success mb-1">Instructor's Solution:</p>
                       <p className="text-sm text-foreground">{d.answer}</p>
-                    </div>
+                    </motion.div>
                   )}
                 </div>
               </div>

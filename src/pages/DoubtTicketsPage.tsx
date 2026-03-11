@@ -17,14 +17,14 @@ const DoubtTicketsPage = () => {
     if (!answer?.trim()) return;
     setLocalDoubts(prev => prev.map(d => d.id === id ? { ...d, status: "resolved" as const, answer } : d));
     setReplyText(prev => ({ ...prev, [id]: "" }));
-    toast({ title: "Doubt Resolved", description: "Solution posted successfully." });
+    toast({ title: "✅ Doubt Resolved", description: "Solution posted — student will see it on their Doubts page." });
   };
 
   return (
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-2xl font-heading font-bold text-foreground">Doubt Tickets</h1>
-        <p className="text-muted-foreground">View and resolve student doubts</p>
+        <p className="text-muted-foreground">View and resolve student doubts — solutions appear on students' pages</p>
       </motion.div>
 
       <div className="space-y-4">
@@ -45,7 +45,7 @@ const DoubtTicketsPage = () => {
               </Badge>
             </div>
             {d.status === "resolved" && d.answer && (
-              <div className="ml-11 p-3 rounded-lg bg-accent/50 border-l-4 border-success">
+              <div className="ml-11 p-3 rounded-lg bg-success/5 border-l-4 border-success">
                 <p className="text-sm text-foreground">{d.answer}</p>
               </div>
             )}
@@ -53,7 +53,7 @@ const DoubtTicketsPage = () => {
               <div className="ml-11 flex gap-2 mt-3">
                 <Input value={replyText[d.id] || ""} onChange={(e) => setReplyText({ ...replyText, [d.id]: e.target.value })}
                   placeholder="Type your solution..." className="flex-1" />
-                <Button onClick={() => resolve(d.id)} size="sm" className="gradient-primary text-primary-foreground">
+                <Button onClick={() => resolve(d.id)} size="sm" className="gradient-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/25 transition-all">
                   <Send className="w-4 h-4" />
                 </Button>
               </div>

@@ -3,9 +3,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  LayoutDashboard, BookOpen, FileText, Trophy, Calendar, MessageSquare, Bot, Bell, Users, BarChart3, ClipboardList, LogOut, GraduationCap, ChevronLeft, Menu
+  LayoutDashboard, BookOpen, FileText, Trophy, Calendar, MessageSquare, Bot, Users, BarChart3, ClipboardList, LogOut, GraduationCap, ChevronLeft, Menu, MessagesSquare
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 const studentLinks = [
@@ -15,6 +14,7 @@ const studentLinks = [
   { to: "/leaderboard", icon: Trophy, label: "Leaderboard" },
   { to: "/calendar", icon: Calendar, label: "Calendar" },
   { to: "/doubts", icon: MessageSquare, label: "Doubts" },
+  { to: "/chat", icon: MessagesSquare, label: "Student Chat" },
   { to: "/ai-agent", icon: Bot, label: "AI HelpMate" },
 ];
 
@@ -43,7 +43,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
         <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
           <GraduationCap className="w-5 h-5 text-primary-foreground" />
         </div>
-        {!collapsed && <span className="text-lg font-heading font-bold text-sidebar-foreground">ConceptDrift</span>}
+        {!collapsed && <span className="text-lg font-heading font-bold text-sidebar-foreground">CognIQ</span>}
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-1">
@@ -53,8 +53,8 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
             <button
               key={link.to}
               onClick={() => { navigate(link.to); setMobileOpen(false); }}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                active ? "bg-sidebar-primary text-sidebar-primary-foreground" : "text-sidebar-foreground hover:bg-sidebar-accent"
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                active ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg shadow-primary/20" : "text-sidebar-foreground hover:bg-sidebar-accent hover:translate-x-1"
               }`}
             >
               <link.icon className="w-5 h-5 flex-shrink-0" />
@@ -108,7 +108,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <main className="flex-1 overflow-y-auto">
         <div className="md:hidden flex items-center gap-3 p-4 border-b border-border bg-card">
           <button onClick={() => setMobileOpen(true)}><Menu className="w-6 h-6" /></button>
-          <span className="font-heading font-bold text-foreground">ConceptDrift</span>
+          <span className="font-heading font-bold text-foreground">CognIQ</span>
         </div>
         <div className="p-4 md:p-6 lg:p-8">{children}</div>
       </main>

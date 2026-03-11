@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { students } from "@/data/mockData";
-import { AlertTriangle, TrendingDown, TrendingUp, ArrowRight } from "lucide-react";
+import { students, studentDriftData } from "@/data/mockData";
+import { AlertTriangle, TrendingDown, TrendingUp, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-
-const driftHistory = [
-  { week: "W1", value: -1.2 }, { week: "W2", value: -3.5 },
-  { week: "W3", value: -5.8 }, { week: "W4", value: -8.5 },
-];
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import DriftCharts from "@/components/DriftCharts";
 
 const DriftAlertsPage = () => {
   const declining = students.filter(s => s.trend === "down");
   const improving = students.filter(s => s.trend === "up");
+  const [selectedStudent, setSelectedStudent] = useState<number | null>(null);
+
+  const selectedStudentData = selectedStudent ? students.find(s => s.id === selectedStudent) : null;
+  const selectedDriftData = selectedStudent ? studentDriftData[selectedStudent] : null;
 
   return (
     <div className="space-y-6">
@@ -31,7 +31,7 @@ const DriftAlertsPage = () => {
           <p className="text-xs text-muted-foreground mb-3">Students showing declining performance</p>
           <div className="space-y-2">
             {declining.map(s => (
-              <div key={s.id} className="flex items-center justify-between p-3 rounded-lg bg-destructive/5">
+              <motion.div key={s.id} className="flex items-center justify-between p-3 rounded-lg bg-destructive/5 hover:bg-destructive/10 transition-colors cursor-pointer" onClick={() => setSelectedStudent(s.id)} whileHover={{ x: 4 }}>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-destructive/10 flex items-center justify-center text-xs font-bold text-destructive">{s.avatar}</div>
                   <div>
@@ -39,8 +39,11 @@ const DriftAlertsPage = () => {
                     <p className="text-xs text-muted-foreground">Score: {s.avgScore}</p>
                   </div>
                 </div>
-                <Badge variant="destructive" className="font-mono">{s.drift}%</Badge>
-              </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant="destructive" className="font-mono">{s.drift}%</Badge>
+                  <Eye className="w-4 h-4 text-muted-foreground" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
@@ -53,7 +56,7 @@ const DriftAlertsPage = () => {
           <p className="text-xs text-muted-foreground mb-3">Students showing improvement</p>
           <div className="space-y-2">
             {improving.map(s => (
-              <div key={s.id} className="flex items-center justify-between p-3 rounded-lg bg-success/5">
+              <motion.div key={s.id} className="flex items-center justify-between p-3 rounded-lg bg-success/5 hover:bg-success/10 transition-colors cursor-pointer" onClick={() => setSelectedStudent(s.id)} whileHover={{ x: 4 }}>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-success/10 flex items-center justify-center text-xs font-bold text-success">{s.avatar}</div>
                   <div>
@@ -61,24 +64,40 @@ const DriftAlertsPage = () => {
                     <p className="text-xs text-muted-foreground">Score: {s.avgScore}</p>
                   </div>
                 </div>
-                <Badge className="gradient-success text-success-foreground font-mono">+{s.drift}%</Badge>
-              </div>
+                <div className="flex items-center gap-2">
+                  <Badge className="gradient-success text-success-foreground font-mono">+{s.drift}%</Badge>
+                  <Eye className="w-4 h-4 text-muted-foreground" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="stat-card">
-        <h2 className="text-lg font-heading font-semibold text-foreground mb-4">Drift Trend (Sample: Ethan Brooks)</h2>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={driftHistory}>
-            <XAxis dataKey="week" tick={{ fontSize: 12, fill: "hsl(220, 10%, 46%)" }} axisLine={false} tickLine={false} />
-            <YAxis tick={{ fontSize: 12, fill: "hsl(220, 10%, 46%)" }} axisLine={false} tickLine={false} />
-            <Tooltip />
-            <Line type="monotone" dataKey="value" stroke="hsl(0, 84%, 60%)" strokeWidth={2} dot={{ fill: "hsl(0, 84%, 60%)", r: 4 }} />
-          </LineChart>
-        </ResponsiveContainer>
-      </motion.div>
+      {/* Student Drift Detail Modal */}
+      <Dialog open={selectedStudent !== null} onOpenChange={() => setSelectedStudent(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-3">
+              {selectedStudentData && (
+                <>
+                  <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-sm font-bold text-primary-foreground">
+                    {selectedStudentData.avatar}
+                  </div>
+                  <div>
+                    <span>{selectedStudentData.name} - Drift Analysis</span>
+                    <p className="text-sm font-normal text-muted-foreground">
+                      Drift: {selectedStudentData.drift > 0 ? "+" : ""}{selectedStudentData.drift}% ·
+                      {selectedStudentData.trend === "up" ? " 📈 Improving" : selectedStudentData.trend === "down" ? " 📉 Declining" : " ➡️ Stable"}
+                    </p>
+                  </div>
+                </>
+              )}
+            </DialogTitle>
+          </DialogHeader>
+          {selectedDriftData && <DriftCharts data={selectedDriftData} />}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import LeaderboardPage from "@/pages/LeaderboardPage";
 import CalendarPage from "@/pages/CalendarPage";
 import DoubtsPage from "@/pages/DoubtsPage";
 import AIAgentPage from "@/pages/AIAgentPage";
+import StudentChatPage from "@/pages/StudentChatPage";
 import StudentsPage from "@/pages/StudentsPage";
 import DriftAlertsPage from "@/pages/DriftAlertsPage";
 import AssignTasksPage from "@/pages/AssignTasksPage";
@@ -47,6 +48,7 @@ const AppRoutes = () => {
       <Route path="/leaderboard" element={<ProtectedRoute role="student"><LeaderboardPage /></ProtectedRoute>} />
       <Route path="/calendar" element={<ProtectedRoute role="student"><CalendarPage /></ProtectedRoute>} />
       <Route path="/doubts" element={<ProtectedRoute role="student"><DoubtsPage /></ProtectedRoute>} />
+      <Route path="/chat" element={<ProtectedRoute role="student"><StudentChatPage /></ProtectedRoute>} />
       <Route path="/ai-agent" element={<ProtectedRoute role="student"><AIAgentPage /></ProtectedRoute>} />
       {/* Instructor Routes */}
       <Route path="/students" element={<ProtectedRoute role="instructor"><StudentsPage /></ProtectedRoute>} />
